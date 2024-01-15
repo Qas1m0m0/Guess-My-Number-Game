@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 // console.log(document.querySelector('.message').textContent);
 
 // console.log(document.querySelector('.message').textContent = 'Take your BEST GUESS');
@@ -17,12 +15,18 @@ function checkAnswer() {
     const guess = Number(document.querySelector('.guess').value);
     console.log(guess)
 
-
+    // When there is no input
     if(!guess) {
         document.querySelector('.message').textContent = 'NO VALUE INPUT 🚫'
-    } else if (guess === secretNumber) {
+    } 
+    // When player wins
+    else if (guess === secretNumber) {
         document.querySelector('.message').textContent = 'Correct Number! 🎉'
-    } else if(guess > secretNumber) {
+        document.querySelector('body').style.backgroundColor = '#60b347';
+        document.querySelector('.number').style.width = '400px';
+    } 
+    // When guess is too high
+    else if(guess > secretNumber) {
         if(score > 1){
         document.querySelector('.message').textContent = 'Too High!'
         score--;
@@ -30,6 +34,7 @@ function checkAnswer() {
         } else document.querySelector('.message').textContent = 'You Lost The Game!';
         document.querySelector('.score').textContent = 0
     } 
+       // When gues is too low
         else if(guess < secretNumber) {
         if(score > 1){
             document.querySelector('.message').textContent = 'Too Low!'
@@ -38,7 +43,4 @@ function checkAnswer() {
             } else document.querySelector('.message').textContent = 'You Lost The Game!';
         document.querySelector('.score').textContent = 0;
     }
-    document.querySelector('.message').textContent = 'Too Low!';
-    score--;
-    document.querySelector('.score').textContent = score;
 }
